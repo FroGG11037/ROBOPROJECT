@@ -28,32 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            serialControl = new SerialControl();
             SuspendLayout();
             // 
-            // label1
+            // serialControl
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(370, 174);
-            label1.Name = "label1";
-            label1.Size = new Size(92, 15);
-            label1.TabIndex = 0;
-            label1.Text = "удержание тест";
+            serialControl.Location = new Point(10, 10);
+            serialControl.Name = "serialControl";
+            serialControl.Size = new Size(660, 455);
+            serialControl.TabIndex = 0;
             // 
             // FormHold
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            BackColor = Color.FromArgb(250, 251, 251);
+            ClientSize = new Size(1204, 601);
+            Controls.Add(serialControl);
             Name = "FormHold";
             Text = "FormHold";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private SerialControl serialControl;
     }
 }

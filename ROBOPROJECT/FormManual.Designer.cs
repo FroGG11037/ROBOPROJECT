@@ -28,32 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(273, 185);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Ручное тест";
             // 
             // FormManual
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label1);
+            BackColor = Color.FromArgb(250, 251, 251);
+            ClientSize = new Size(1204, 601);
             Name = "FormManual";
             Text = "FormManual";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
     }
 }
