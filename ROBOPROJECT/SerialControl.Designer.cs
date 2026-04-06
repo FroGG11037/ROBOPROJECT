@@ -40,25 +40,25 @@
             labelMaxSpeed = new Label();
             buttonApply = new Button();
             groupBoxData = new GroupBox();
-            buttonResetData = new Button();
-            groupBoxMotorTop = new GroupBox();
-            labelMotorTopData = new Label();
-            groupBoxMotorMiddle = new GroupBox();
-            labelMotorMiddleData = new Label();
-            groupBoxMotorBottom = new GroupBox();
-            labelMotorBottomData = new Label();
-            groupBoxServoMiddle = new GroupBox();
-            labelServoMiddleData = new Label();
             groupBoxServo = new GroupBox();
             labelServoData = new Label();
+            groupBoxServoMiddle = new GroupBox();
+            labelServoMiddleData = new Label();
+            groupBoxMotorBottom = new GroupBox();
+            labelMotorBottomData = new Label();
+            groupBoxMotorMiddle = new GroupBox();
+            labelMotorMiddleData = new Label();
+            groupBoxMotorTop = new GroupBox();
+            labelMotorTopData = new Label();
+            buttonResetData = new Button();
             groupBoxConnection.SuspendLayout();
             groupBoxCharacteristics.SuspendLayout();
             groupBoxData.SuspendLayout();
-            groupBoxMotorTop.SuspendLayout();
-            groupBoxMotorMiddle.SuspendLayout();
-            groupBoxMotorBottom.SuspendLayout();
-            groupBoxServoMiddle.SuspendLayout();
             groupBoxServo.SuspendLayout();
+            groupBoxServoMiddle.SuspendLayout();
+            groupBoxMotorBottom.SuspendLayout();
+            groupBoxMotorMiddle.SuspendLayout();
+            groupBoxMotorTop.SuspendLayout();
             SuspendLayout();
             // 
             // groupBoxConnection
@@ -78,6 +78,7 @@
             // 
             // comboBoxPorts
             // 
+            comboBoxPorts.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPorts.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             comboBoxPorts.ForeColor = Color.Black;
             comboBoxPorts.FormattingEnabled = true;
@@ -88,6 +89,7 @@
             // 
             // buttonStop
             // 
+            buttonStop.Cursor = Cursors.Hand;
             buttonStop.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonStop.ForeColor = Color.Red;
             buttonStop.Location = new Point(135, 125);
@@ -96,9 +98,11 @@
             buttonStop.TabIndex = 2;
             buttonStop.Text = "Экстренная\r\nостановка";
             buttonStop.UseVisualStyleBackColor = true;
+            buttonStop.Click += buttonStop_Click;
             // 
             // buttonUpdate
             // 
+            buttonUpdate.Cursor = Cursors.Hand;
             buttonUpdate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonUpdate.ForeColor = Color.Black;
             buttonUpdate.Location = new Point(150, 70);
@@ -107,9 +111,11 @@
             buttonUpdate.TabIndex = 1;
             buttonUpdate.Text = "Обновить";
             buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // buttonConnect
             // 
+            buttonConnect.Cursor = Cursors.Hand;
             buttonConnect.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonConnect.ForeColor = Color.Green;
             buttonConnect.Location = new Point(150, 15);
@@ -118,20 +124,22 @@
             buttonConnect.TabIndex = 0;
             buttonConnect.Text = "Подключиться";
             buttonConnect.UseVisualStyleBackColor = true;
+            buttonConnect.Click += buttonConnect_Click;
             // 
             // groupBoxCharacteristics
             // 
             groupBoxCharacteristics.BackColor = Color.FromArgb(231, 238, 255);
             groupBoxCharacteristics.Controls.Add(textBoxAcceleration);
-            groupBoxCharacteristics.Controls.Add(labelAcceleration);
             groupBoxCharacteristics.Controls.Add(textBoxMaxSpeed);
             groupBoxCharacteristics.Controls.Add(labelMaxSpeed);
             groupBoxCharacteristics.Controls.Add(buttonApply);
+            groupBoxCharacteristics.Controls.Add(labelAcceleration);
+            groupBoxCharacteristics.Enabled = false;
             groupBoxCharacteristics.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             groupBoxCharacteristics.ForeColor = Color.Black;
             groupBoxCharacteristics.Location = new Point(0, 220);
             groupBoxCharacteristics.Name = "groupBoxCharacteristics";
-            groupBoxCharacteristics.Size = new Size(320, 230);
+            groupBoxCharacteristics.Size = new Size(290, 230);
             groupBoxCharacteristics.TabIndex = 1;
             groupBoxCharacteristics.TabStop = false;
             groupBoxCharacteristics.Text = "ХАРАКТЕРИСТИКИ";
@@ -142,7 +150,7 @@
             textBoxAcceleration.ForeColor = Color.Black;
             textBoxAcceleration.Location = new Point(5, 190);
             textBoxAcceleration.Name = "textBoxAcceleration";
-            textBoxAcceleration.Size = new Size(110, 29);
+            textBoxAcceleration.Size = new Size(90, 29);
             textBoxAcceleration.TabIndex = 5;
             // 
             // labelAcceleration
@@ -162,7 +170,7 @@
             textBoxMaxSpeed.ForeColor = Color.Black;
             textBoxMaxSpeed.Location = new Point(5, 85);
             textBoxMaxSpeed.Name = "textBoxMaxSpeed";
-            textBoxMaxSpeed.Size = new Size(110, 29);
+            textBoxMaxSpeed.Size = new Size(90, 29);
             textBoxMaxSpeed.TabIndex = 3;
             // 
             // labelMaxSpeed
@@ -178,14 +186,16 @@
             // 
             // buttonApply
             // 
+            buttonApply.Cursor = Cursors.Hand;
             buttonApply.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonApply.ForeColor = Color.Black;
-            buttonApply.Location = new Point(180, 98);
+            buttonApply.Location = new Point(150, 90);
             buttonApply.Name = "buttonApply";
             buttonApply.Size = new Size(135, 50);
             buttonApply.TabIndex = 1;
             buttonApply.Text = "Применить";
             buttonApply.UseVisualStyleBackColor = true;
+            buttonApply.Click += buttonApply_Click;
             // 
             // groupBoxData
             // 
@@ -196,97 +206,39 @@
             groupBoxData.Controls.Add(groupBoxMotorMiddle);
             groupBoxData.Controls.Add(groupBoxMotorTop);
             groupBoxData.Controls.Add(buttonResetData);
+            groupBoxData.Enabled = false;
             groupBoxData.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             groupBoxData.ForeColor = Color.Black;
-            groupBoxData.Location = new Point(345, 0);
+            groupBoxData.Location = new Point(310, 0);
             groupBoxData.Name = "groupBoxData";
-            groupBoxData.Size = new Size(295, 395);
+            groupBoxData.Size = new Size(290, 450);
             groupBoxData.TabIndex = 2;
             groupBoxData.TabStop = false;
             groupBoxData.Text = "ПОЛОЖЕНИЕ";
             // 
-            // buttonResetData
+            // groupBoxServo
             // 
-            buttonResetData.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            buttonResetData.ForeColor = Color.Black;
-            buttonResetData.Location = new Point(150, 335);
-            buttonResetData.Name = "buttonResetData";
-            buttonResetData.Size = new Size(135, 50);
-            buttonResetData.TabIndex = 1;
-            buttonResetData.Text = "Сбросить";
-            buttonResetData.UseVisualStyleBackColor = true;
+            groupBoxServo.BackColor = Color.FromArgb(231, 238, 255);
+            groupBoxServo.Controls.Add(labelServoData);
+            groupBoxServo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            groupBoxServo.ForeColor = Color.Black;
+            groupBoxServo.Location = new Point(155, 180);
+            groupBoxServo.Name = "groupBoxServo";
+            groupBoxServo.Size = new Size(130, 110);
+            groupBoxServo.TabIndex = 9;
+            groupBoxServo.TabStop = false;
+            groupBoxServo.Text = "ЗАХВАТ СЕРВО";
             // 
-            // groupBoxMotorTop
+            // labelServoData
             // 
-            groupBoxMotorTop.BackColor = Color.FromArgb(231, 238, 255);
-            groupBoxMotorTop.Controls.Add(labelMotorTopData);
-            groupBoxMotorTop.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            groupBoxMotorTop.ForeColor = Color.Black;
-            groupBoxMotorTop.Location = new Point(5, 25);
-            groupBoxMotorTop.Name = "groupBoxMotorTop";
-            groupBoxMotorTop.Size = new Size(130, 110);
-            groupBoxMotorTop.TabIndex = 5;
-            groupBoxMotorTop.TabStop = false;
-            groupBoxMotorTop.Text = "ВЕРХНИЙ МОТОР";
-            // 
-            // labelMotorTopData
-            // 
-            labelMotorTopData.AutoSize = true;
-            labelMotorTopData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelMotorTopData.ForeColor = Color.Black;
-            labelMotorTopData.Location = new Point(49, 50);
-            labelMotorTopData.Name = "labelMotorTopData";
-            labelMotorTopData.Size = new Size(32, 37);
-            labelMotorTopData.TabIndex = 4;
-            labelMotorTopData.Text = "0";
-            // 
-            // groupBoxMotorMiddle
-            // 
-            groupBoxMotorMiddle.BackColor = Color.FromArgb(231, 238, 255);
-            groupBoxMotorMiddle.Controls.Add(labelMotorMiddleData);
-            groupBoxMotorMiddle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            groupBoxMotorMiddle.ForeColor = Color.Black;
-            groupBoxMotorMiddle.Location = new Point(5, 150);
-            groupBoxMotorMiddle.Name = "groupBoxMotorMiddle";
-            groupBoxMotorMiddle.Size = new Size(130, 110);
-            groupBoxMotorMiddle.TabIndex = 6;
-            groupBoxMotorMiddle.TabStop = false;
-            groupBoxMotorMiddle.Text = "СРЕДНИЙ МОТОР";
-            // 
-            // labelMotorMiddleData
-            // 
-            labelMotorMiddleData.AutoSize = true;
-            labelMotorMiddleData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelMotorMiddleData.ForeColor = Color.Black;
-            labelMotorMiddleData.Location = new Point(49, 50);
-            labelMotorMiddleData.Name = "labelMotorMiddleData";
-            labelMotorMiddleData.Size = new Size(32, 37);
-            labelMotorMiddleData.TabIndex = 4;
-            labelMotorMiddleData.Text = "0";
-            // 
-            // groupBoxMotorBottom
-            // 
-            groupBoxMotorBottom.BackColor = Color.FromArgb(231, 238, 255);
-            groupBoxMotorBottom.Controls.Add(labelMotorBottomData);
-            groupBoxMotorBottom.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            groupBoxMotorBottom.ForeColor = Color.Black;
-            groupBoxMotorBottom.Location = new Point(5, 275);
-            groupBoxMotorBottom.Name = "groupBoxMotorBottom";
-            groupBoxMotorBottom.Size = new Size(130, 110);
-            groupBoxMotorBottom.TabIndex = 7;
-            groupBoxMotorBottom.TabStop = false;
-            groupBoxMotorBottom.Text = "СРЕДНИЙ МОТОР";
-            // 
-            // labelMotorBottomData
-            // 
-            labelMotorBottomData.AutoSize = true;
-            labelMotorBottomData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelMotorBottomData.ForeColor = Color.Black;
-            labelMotorBottomData.Location = new Point(49, 50);
-            labelMotorBottomData.Name = "labelMotorBottomData";
-            labelMotorBottomData.Size = new Size(32, 37);
-            labelMotorBottomData.TabIndex = 4;
-            labelMotorBottomData.Text = "0";
+            labelServoData.AutoSize = true;
+            labelServoData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelServoData.ForeColor = Color.Black;
+            labelServoData.Location = new Point(49, 50);
+            labelServoData.Name = "labelServoData";
+            labelServoData.Size = new Size(32, 37);
+            labelServoData.TabIndex = 4;
+            labelServoData.Text = "0";
             // 
             // groupBoxServoMiddle
             // 
@@ -312,29 +264,89 @@
             labelServoMiddleData.TabIndex = 4;
             labelServoMiddleData.Text = "0";
             // 
-            // groupBoxServo
+            // groupBoxMotorBottom
             // 
-            groupBoxServo.BackColor = Color.FromArgb(231, 238, 255);
-            groupBoxServo.Controls.Add(labelServoData);
-            groupBoxServo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            groupBoxServo.ForeColor = Color.Black;
-            groupBoxServo.Location = new Point(155, 150);
-            groupBoxServo.Name = "groupBoxServo";
-            groupBoxServo.Size = new Size(130, 110);
-            groupBoxServo.TabIndex = 9;
-            groupBoxServo.TabStop = false;
-            groupBoxServo.Text = "ЗАХВАТ СЕРВО";
+            groupBoxMotorBottom.BackColor = Color.FromArgb(231, 238, 255);
+            groupBoxMotorBottom.Controls.Add(labelMotorBottomData);
+            groupBoxMotorBottom.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            groupBoxMotorBottom.ForeColor = Color.Black;
+            groupBoxMotorBottom.Location = new Point(5, 330);
+            groupBoxMotorBottom.Name = "groupBoxMotorBottom";
+            groupBoxMotorBottom.Size = new Size(130, 110);
+            groupBoxMotorBottom.TabIndex = 7;
+            groupBoxMotorBottom.TabStop = false;
+            groupBoxMotorBottom.Text = "НИЖНИЙ МОТОР";
             // 
-            // labelServoData
+            // labelMotorBottomData
             // 
-            labelServoData.AutoSize = true;
-            labelServoData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelServoData.ForeColor = Color.Black;
-            labelServoData.Location = new Point(49, 50);
-            labelServoData.Name = "labelServoData";
-            labelServoData.Size = new Size(32, 37);
-            labelServoData.TabIndex = 4;
-            labelServoData.Text = "0";
+            labelMotorBottomData.AutoSize = true;
+            labelMotorBottomData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelMotorBottomData.ForeColor = Color.Black;
+            labelMotorBottomData.Location = new Point(49, 50);
+            labelMotorBottomData.Name = "labelMotorBottomData";
+            labelMotorBottomData.Size = new Size(32, 37);
+            labelMotorBottomData.TabIndex = 4;
+            labelMotorBottomData.Text = "0";
+            // 
+            // groupBoxMotorMiddle
+            // 
+            groupBoxMotorMiddle.BackColor = Color.FromArgb(231, 238, 255);
+            groupBoxMotorMiddle.Controls.Add(labelMotorMiddleData);
+            groupBoxMotorMiddle.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            groupBoxMotorMiddle.ForeColor = Color.Black;
+            groupBoxMotorMiddle.Location = new Point(5, 180);
+            groupBoxMotorMiddle.Name = "groupBoxMotorMiddle";
+            groupBoxMotorMiddle.Size = new Size(130, 110);
+            groupBoxMotorMiddle.TabIndex = 6;
+            groupBoxMotorMiddle.TabStop = false;
+            groupBoxMotorMiddle.Text = "СРЕДНИЙ МОТОР";
+            // 
+            // labelMotorMiddleData
+            // 
+            labelMotorMiddleData.AutoSize = true;
+            labelMotorMiddleData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelMotorMiddleData.ForeColor = Color.Black;
+            labelMotorMiddleData.Location = new Point(49, 50);
+            labelMotorMiddleData.Name = "labelMotorMiddleData";
+            labelMotorMiddleData.Size = new Size(32, 37);
+            labelMotorMiddleData.TabIndex = 4;
+            labelMotorMiddleData.Text = "0";
+            // 
+            // groupBoxMotorTop
+            // 
+            groupBoxMotorTop.BackColor = Color.FromArgb(231, 238, 255);
+            groupBoxMotorTop.Controls.Add(labelMotorTopData);
+            groupBoxMotorTop.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            groupBoxMotorTop.ForeColor = Color.Black;
+            groupBoxMotorTop.Location = new Point(5, 25);
+            groupBoxMotorTop.Name = "groupBoxMotorTop";
+            groupBoxMotorTop.Size = new Size(130, 110);
+            groupBoxMotorTop.TabIndex = 5;
+            groupBoxMotorTop.TabStop = false;
+            groupBoxMotorTop.Text = "ВЕРХНИЙ МОТОР";
+            // 
+            // labelMotorTopData
+            // 
+            labelMotorTopData.AutoSize = true;
+            labelMotorTopData.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelMotorTopData.ForeColor = Color.Black;
+            labelMotorTopData.Location = new Point(49, 50);
+            labelMotorTopData.Name = "labelMotorTopData";
+            labelMotorTopData.Size = new Size(32, 37);
+            labelMotorTopData.TabIndex = 4;
+            labelMotorTopData.Text = "0";
+            // 
+            // buttonResetData
+            // 
+            buttonResetData.Cursor = Cursors.Hand;
+            buttonResetData.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonResetData.ForeColor = Color.Black;
+            buttonResetData.Location = new Point(155, 390);
+            buttonResetData.Name = "buttonResetData";
+            buttonResetData.Size = new Size(135, 50);
+            buttonResetData.TabIndex = 1;
+            buttonResetData.Text = "Сбросить";
+            buttonResetData.UseVisualStyleBackColor = true;
             // 
             // SerialControl
             // 
@@ -344,21 +356,21 @@
             Controls.Add(groupBoxCharacteristics);
             Controls.Add(groupBoxConnection);
             Name = "SerialControl";
-            Size = new Size(640, 450);
+            Size = new Size(600, 450);
             groupBoxConnection.ResumeLayout(false);
             groupBoxCharacteristics.ResumeLayout(false);
             groupBoxCharacteristics.PerformLayout();
             groupBoxData.ResumeLayout(false);
-            groupBoxMotorTop.ResumeLayout(false);
-            groupBoxMotorTop.PerformLayout();
-            groupBoxMotorMiddle.ResumeLayout(false);
-            groupBoxMotorMiddle.PerformLayout();
-            groupBoxMotorBottom.ResumeLayout(false);
-            groupBoxMotorBottom.PerformLayout();
-            groupBoxServoMiddle.ResumeLayout(false);
-            groupBoxServoMiddle.PerformLayout();
             groupBoxServo.ResumeLayout(false);
             groupBoxServo.PerformLayout();
+            groupBoxServoMiddle.ResumeLayout(false);
+            groupBoxServoMiddle.PerformLayout();
+            groupBoxMotorBottom.ResumeLayout(false);
+            groupBoxMotorBottom.PerformLayout();
+            groupBoxMotorMiddle.ResumeLayout(false);
+            groupBoxMotorMiddle.PerformLayout();
+            groupBoxMotorTop.ResumeLayout(false);
+            groupBoxMotorTop.PerformLayout();
             ResumeLayout(false);
         }
 

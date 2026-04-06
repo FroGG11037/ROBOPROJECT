@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            serialControl = new SerialControl();
             SuspendLayout();
+            // 
+            // serialControl
+            // 
+            serialControl.Location = new Point(10, 10);
+            serialControl.Name = "serialControl";
+            serialControl.Size = new Size(640, 450);
+            serialControl.TabIndex = 0;
             // 
             // FormManual
             // 
@@ -36,11 +44,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 251, 251);
             ClientSize = new Size(1204, 601);
+            Controls.Add(serialControl);
             Name = "FormManual";
             Text = "FormManual";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private SerialControl serialControl;
     }
 }
