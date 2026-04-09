@@ -12,18 +12,22 @@ namespace ROBOPROJECT
             get { return _maxSpeed; }
             set { _maxSpeed = value; }
         }
+
         private static uint _acceleration = 500;
         public static uint Acceleration
         {
             get { return _acceleration; }
             set { _acceleration = value; }
         }
+
         private static int _motorBottom = 0;
         private static int _motorMiddle = 0;
         private static int _motorTop = 0;
         private static uint _servoMiddle = 0;
         private static int _servo = 0;
+
         public static event EventHandler DataChanged;
+
         public static int MotorBottom
         {
             get { return _motorBottom; }
@@ -33,6 +37,7 @@ namespace ROBOPROJECT
                 DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
+
         public static int MotorMiddle
         {
             get { return _motorMiddle; }
@@ -42,6 +47,7 @@ namespace ROBOPROJECT
                 DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
+
         public static int MotorTop
         {
             get { return _motorTop; }
@@ -61,6 +67,7 @@ namespace ROBOPROJECT
                 DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
+
         public static int Servo
         {
             get { return _servo; }

@@ -43,11 +43,13 @@ namespace ROBOPROJECT
                 buttonConnect.ForeColor = Color.Green;
             }
         }
+
         private void UpdateCharacteristics() //обновление состояния характеристик
         {
             labelMaxSpeed.Text = "Максимальная скорость\r\nв шагах: " + SerialPortData.MaxSpeed;
             labelAcceleration.Text = "Ускорение\r\nв шагах/секунду²: " + SerialPortData.Acceleration;
         } 
+
         private void UpdateData(object sender, EventArgs e) //обновление состояния положения
         {
             labelMotorTopData.Text = SerialPortData.MotorTop.ToString();
@@ -56,10 +58,12 @@ namespace ROBOPROJECT
             labelServoMiddleData.Text = SerialPortData.ServoMiddle.ToString();
             labelServoData.Text = SerialPortData.Servo.ToString();
         }
-        private void Unsubscribtion(object sender, EventArgs e)
+
+        private void Unsubscribtion(object sender, EventArgs e) //отписка от события при закрытии user control
         {
             SerialPortData.DataChanged -= UpdateData;
         }
+
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             if (!SerialPortManager.IsPortOpen)
@@ -126,6 +130,5 @@ namespace ROBOPROJECT
                 UpdateCharacteristics();
             }   
         }
-
     }
 }
