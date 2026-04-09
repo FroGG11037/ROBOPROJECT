@@ -23,12 +23,14 @@ namespace ROBOPROJECT
         private static int _motorTop = 0;
         private static uint _servoMiddle = 0;
         private static int _servo = 0;
+        public static event EventHandler DataChanged;
         public static int MotorBottom
         {
             get { return _motorBottom; }
             set
             {
-                _motorBottom += value;
+                    _motorBottom += value;
+                DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
         public static int MotorMiddle
@@ -37,6 +39,7 @@ namespace ROBOPROJECT
             set
             {
                 _motorMiddle += value;
+                DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
         public static int MotorTop
@@ -45,6 +48,7 @@ namespace ROBOPROJECT
             set
             {
                 _motorTop += value;
+                DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
 
@@ -54,6 +58,7 @@ namespace ROBOPROJECT
             set
             {
                 _servoMiddle = value;
+                DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
         public static int Servo
@@ -62,6 +67,7 @@ namespace ROBOPROJECT
             set
             {
                 _servo += value;
+                DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
     }

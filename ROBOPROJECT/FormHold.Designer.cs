@@ -40,6 +40,7 @@
             buttonApply = new Button();
             labelInterval = new Label();
             groupBoxServoGripper = new GroupBox();
+            trackBarServoGripperSpeed = new TrackBar();
             radioButtonBackwardServoGripper = new RadioButton();
             radioButtonForwardServoGripper = new RadioButton();
             buttonHoldServoGripper = new Button();
@@ -55,11 +56,12 @@
             radioButtonBackwardMotorMiddle = new RadioButton();
             radioButtonForwardMotorMiddle = new RadioButton();
             buttonHoldMotorMiddle = new Button();
-            serialControl1 = new SerialControl();
+            serialControl = new SerialControl();
             groupBoxHold.SuspendLayout();
             groupBoxMotorBottom.SuspendLayout();
             groupBoxHoldCharacteristics.SuspendLayout();
             groupBoxServoGripper.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarServoGripperSpeed).BeginInit();
             groupBoxServoMiddle.SuspendLayout();
             groupBoxMotorTop.SuspendLayout();
             groupBoxMotorMiddle.SuspendLayout();
@@ -76,12 +78,12 @@
             groupBoxHold.Controls.Add(groupBoxMotorMiddle);
             groupBoxHold.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             groupBoxHold.ForeColor = Color.Black;
-            groupBoxHold.Location = new Point(675, 10);
+            groupBoxHold.Location = new Point(630, 10);
             groupBoxHold.Name = "groupBoxHold";
-            groupBoxHold.Size = new Size(500, 505);
+            groupBoxHold.Size = new Size(500, 566);
             groupBoxHold.TabIndex = 3;
             groupBoxHold.TabStop = false;
-            groupBoxHold.Text = "ЗАЖАТИЕ";
+            groupBoxHold.Text = "УПРАВЛЕНИЕ ПО ЗАЖАТИЮ";
             // 
             // groupBoxMotorBottom
             // 
@@ -144,7 +146,7 @@
             groupBoxHoldCharacteristics.Controls.Add(labelInterval);
             groupBoxHoldCharacteristics.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             groupBoxHoldCharacteristics.ForeColor = Color.Black;
-            groupBoxHoldCharacteristics.Location = new Point(255, 280);
+            groupBoxHoldCharacteristics.Location = new Point(254, 340);
             groupBoxHoldCharacteristics.Name = "groupBoxHoldCharacteristics";
             groupBoxHoldCharacteristics.Size = new Size(240, 220);
             groupBoxHoldCharacteristics.TabIndex = 12;
@@ -206,6 +208,7 @@
             // groupBoxServoGripper
             // 
             groupBoxServoGripper.BackColor = Color.FromArgb(231, 238, 255);
+            groupBoxServoGripper.Controls.Add(trackBarServoGripperSpeed);
             groupBoxServoGripper.Controls.Add(radioButtonBackwardServoGripper);
             groupBoxServoGripper.Controls.Add(radioButtonForwardServoGripper);
             groupBoxServoGripper.Controls.Add(buttonHoldServoGripper);
@@ -213,10 +216,20 @@
             groupBoxServoGripper.ForeColor = Color.Black;
             groupBoxServoGripper.Location = new Point(255, 150);
             groupBoxServoGripper.Name = "groupBoxServoGripper";
-            groupBoxServoGripper.Size = new Size(240, 110);
+            groupBoxServoGripper.Size = new Size(240, 170);
             groupBoxServoGripper.TabIndex = 11;
             groupBoxServoGripper.TabStop = false;
             groupBoxServoGripper.Text = "ЗАХВАТ СЕРВО";
+            // 
+            // trackBarServoGripperSpeed
+            // 
+            trackBarServoGripperSpeed.LargeChange = 10;
+            trackBarServoGripperSpeed.Location = new Point(6, 119);
+            trackBarServoGripperSpeed.Maximum = 100;
+            trackBarServoGripperSpeed.Name = "trackBarServoGripperSpeed";
+            trackBarServoGripperSpeed.Size = new Size(230, 45);
+            trackBarServoGripperSpeed.TabIndex = 4;
+            trackBarServoGripperSpeed.Value = 1;
             // 
             // radioButtonBackwardServoGripper
             // 
@@ -407,12 +420,12 @@
             buttonHoldMotorMiddle.Text = "Зажмите";
             buttonHoldMotorMiddle.UseVisualStyleBackColor = true;
             // 
-            // serialControl1
+            // serialControl
             // 
-            serialControl1.Location = new Point(12, 10);
-            serialControl1.Name = "serialControl1";
-            serialControl1.Size = new Size(640, 450);
-            serialControl1.TabIndex = 4;
+            serialControl.Location = new Point(10, 10);
+            serialControl.Name = "serialControl";
+            serialControl.Size = new Size(600, 450);
+            serialControl.TabIndex = 4;
             // 
             // FormHold
             // 
@@ -420,7 +433,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 251, 251);
             ClientSize = new Size(1204, 601);
-            Controls.Add(serialControl1);
+            Controls.Add(serialControl);
             Controls.Add(groupBoxHold);
             Name = "FormHold";
             Text = "FormHold";
@@ -431,6 +444,7 @@
             groupBoxHoldCharacteristics.PerformLayout();
             groupBoxServoGripper.ResumeLayout(false);
             groupBoxServoGripper.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarServoGripperSpeed).EndInit();
             groupBoxServoMiddle.ResumeLayout(false);
             groupBoxServoMiddle.PerformLayout();
             groupBoxMotorTop.ResumeLayout(false);
@@ -465,10 +479,11 @@
         private TextBox textBoxStepsPerInterval;
         private Label labelStepsPerInterval;
         private Button buttonApply;
-        private SerialControl serialControl1;
         private GroupBox groupBoxMotorBottom;
         private RadioButton radioButtonBackwardMotorBottom;
         private RadioButton radioButtonForwardMotorBottom;
         private Button buttonHoldMotorBottom;
+        private SerialControl serialControl;
+        private TrackBar trackBarServoGripperSpeed;
     }
 }

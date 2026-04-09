@@ -16,7 +16,8 @@ namespace ROBOPROJECT
             InitializeComponent();
             UpdatePortStatus();
             UpdateCharacteristics();
-            UpdateData();
+            SerialPortData.DataChanged += UpdateData;
+            Disposed += Unsubscribtion;
         }
         private void UpdatePortStatus() //обновление состояния кнопок подключения
         {
@@ -47,13 +48,17 @@ namespace ROBOPROJECT
             labelMaxSpeed.Text = "Максимальная скорость\r\nв шагах: " + SerialPortData.MaxSpeed;
             labelAcceleration.Text = "Ускорение\r\nв шагах/секунду²: " + SerialPortData.Acceleration;
         } 
-        private void UpdateData() //обновление состояния положения
+        private void UpdateData(object sender, EventArgs e) //обновление состояния положения
         {
             labelMotorTopData.Text = SerialPortData.MotorTop.ToString();
             labelMotorMiddleData.Text = SerialPortData.MotorMiddle.ToString();
             labelMotorBottomData.Text = SerialPortData.MotorBottom.ToString();
             labelServoMiddleData.Text = SerialPortData.ServoMiddle.ToString();
             labelServoData.Text = SerialPortData.Servo.ToString();
+        }
+        private void Unsubscribtion(object sender, EventArgs e)
+        {
+            SerialPortData.DataChanged -= UpdateData;
         }
         private void buttonConnect_Click(object sender, EventArgs e)
         {
