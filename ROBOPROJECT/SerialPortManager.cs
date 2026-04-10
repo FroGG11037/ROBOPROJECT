@@ -12,10 +12,6 @@ namespace ROBOPROJECT
             {
             get {return _serialPort;}
             }
-        public static bool IsPortOpen //проверка открыт ли порт
-        {
-           get { return _serialPort.IsOpen; }
-        }
         public static void OpenPort(string portName) //открытие порта
         {
            if (!_serialPort.IsOpen)

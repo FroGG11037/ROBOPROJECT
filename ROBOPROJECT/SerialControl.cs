@@ -16,12 +16,13 @@ namespace ROBOPROJECT
             InitializeComponent();
             UpdatePortStatus();
             UpdateCharacteristics();
+            UpdateData(null, EventArgs.Empty);
             SerialPortData.DataChanged += UpdateData;
             Disposed += Unsubscribtion;
         }
         private void UpdatePortStatus() //обновление состояния кнопок подключения
         {
-            if (SerialPortManager.IsPortOpen)
+            if (SerialPortManager.mySerialPort.IsOpen)
             {
                 comboBoxPorts.Enabled = false;
                 groupBoxCharacteristics.Enabled = true;
@@ -66,7 +67,7 @@ namespace ROBOPROJECT
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
-            if (!SerialPortManager.IsPortOpen)
+            if (!SerialPortManager.mySerialPort.IsOpen)
             {
                 if (!string.IsNullOrWhiteSpace(comboBoxPorts.Text))
                 {
@@ -104,7 +105,7 @@ namespace ROBOPROJECT
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            if (SerialPortManager.IsPortOpen)
+            if (SerialPortManager.mySerialPort.IsOpen)
             {
                 string stop = "E";
                 SerialPortManager.mySerialPort.WriteLine(stop);

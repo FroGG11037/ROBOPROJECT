@@ -35,10 +35,10 @@
             buttonConnect = new Button();
             groupBoxCharacteristics = new GroupBox();
             textBoxAcceleration = new TextBox();
-            labelAcceleration = new Label();
             textBoxMaxSpeed = new TextBox();
             labelMaxSpeed = new Label();
             buttonApply = new Button();
+            labelAcceleration = new Label();
             groupBoxData = new GroupBox();
             groupBoxServo = new GroupBox();
             labelServoData = new Label();
@@ -153,17 +153,6 @@
             textBoxAcceleration.Size = new Size(90, 29);
             textBoxAcceleration.TabIndex = 5;
             // 
-            // labelAcceleration
-            // 
-            labelAcceleration.AutoSize = true;
-            labelAcceleration.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            labelAcceleration.ForeColor = Color.Black;
-            labelAcceleration.Location = new Point(5, 130);
-            labelAcceleration.Name = "labelAcceleration";
-            labelAcceleration.Size = new Size(173, 42);
-            labelAcceleration.TabIndex = 4;
-            labelAcceleration.Text = "Ускорение\r\nв шагах/секунду²: 500";
-            // 
             // textBoxMaxSpeed
             // 
             textBoxMaxSpeed.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
@@ -196,6 +185,17 @@
             buttonApply.Text = "Применить";
             buttonApply.UseVisualStyleBackColor = true;
             buttonApply.Click += buttonApply_Click;
+            // 
+            // labelAcceleration
+            // 
+            labelAcceleration.AutoSize = true;
+            labelAcceleration.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            labelAcceleration.ForeColor = Color.Black;
+            labelAcceleration.Location = new Point(5, 130);
+            labelAcceleration.Name = "labelAcceleration";
+            labelAcceleration.Size = new Size(173, 42);
+            labelAcceleration.TabIndex = 4;
+            labelAcceleration.Text = "Ускорение\r\nв шагах/секунду²: 500";
             // 
             // groupBoxData
             // 
@@ -236,9 +236,9 @@
             labelServoData.ForeColor = Color.Black;
             labelServoData.Location = new Point(49, 50);
             labelServoData.Name = "labelServoData";
-            labelServoData.Size = new Size(32, 37);
+            labelServoData.Size = new Size(47, 37);
             labelServoData.TabIndex = 4;
-            labelServoData.Text = "0";
+            labelServoData.Text = "90";
             // 
             // groupBoxServoMiddle
             // 
@@ -260,9 +260,9 @@
             labelServoMiddleData.ForeColor = Color.Black;
             labelServoMiddleData.Location = new Point(49, 50);
             labelServoMiddleData.Name = "labelServoMiddleData";
-            labelServoMiddleData.Size = new Size(32, 37);
+            labelServoMiddleData.Size = new Size(47, 37);
             labelServoMiddleData.TabIndex = 4;
-            labelServoMiddleData.Text = "0";
+            labelServoMiddleData.Text = "90";
             // 
             // groupBoxMotorBottom
             // 
@@ -341,7 +341,7 @@
             buttonResetData.Cursor = Cursors.Hand;
             buttonResetData.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             buttonResetData.ForeColor = Color.Black;
-            buttonResetData.Location = new Point(155, 390);
+            buttonResetData.Location = new Point(150, 389);
             buttonResetData.Name = "buttonResetData";
             buttonResetData.Size = new Size(135, 50);
             buttonResetData.TabIndex = 1;

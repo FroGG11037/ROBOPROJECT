@@ -23,8 +23,8 @@ namespace ROBOPROJECT
         private static int _motorBottom = 0;
         private static int _motorMiddle = 0;
         private static int _motorTop = 0;
-        private static uint _servoMiddle = 0;
-        private static int _servo = 0;
+        private static uint _servoMiddle = 90;
+        private static uint _servo = 90;
 
         public static event EventHandler DataChanged;
 
@@ -68,12 +68,12 @@ namespace ROBOPROJECT
             }
         }
 
-        public static int Servo
+        public static uint Servo
         {
             get { return _servo; }
             set
             {
-                _servo += value;
+                _servo = value;
                 DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
