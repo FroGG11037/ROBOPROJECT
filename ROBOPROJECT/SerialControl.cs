@@ -20,6 +20,8 @@ namespace ROBOPROJECT
             SerialPortData.DataChanged += UpdateData;
             Disposed += Unsubscribtion;
         }
+        uint oldMaxSpeed = 1000;
+        uint oldAcceleration = 500;
         private void UpdatePortStatus() //обновление состояния кнопок подключения
         {
             if (SerialPortManager.mySerialPort.IsOpen)
@@ -49,7 +51,7 @@ namespace ROBOPROJECT
         {
             labelMaxSpeed.Text = "Максимальная скорость\r\nв шагах: " + SerialPortData.MaxSpeed;
             labelAcceleration.Text = "Ускорение\r\nв шагах/секунду²: " + SerialPortData.Acceleration;
-        } 
+        }
 
         private void UpdateData(object sender, EventArgs e) //обновление состояния положения
         {
@@ -109,6 +111,8 @@ namespace ROBOPROJECT
             {
                 string stop = "E";
                 SerialPortManager.mySerialPort.WriteLine(stop);
+                SerialPortData.ServoMiddle = 90;
+                SerialPortData.Servo = 90;
             }
             else
             {
@@ -118,18 +122,28 @@ namespace ROBOPROJECT
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            if (uint.TryParse(textBoxMaxSpeed.Text, out uint maxSpeed) && maxSpeed > 0)
+            if (SerialPortManager.mySerialPort.IsOpen)
             {
-                SerialPortData.MaxSpeed = maxSpeed;
-                SerialPortManager.mySerialPort.WriteLine("R" + SerialPortData.MaxSpeed);
-                UpdateCharacteristics();
+                if (uint.TryParse(textBoxMaxSpeed.Text, out uint maxSpeed) && maxSpeed > 0 && maxSpeed != oldMaxSpeed)
+                {
+                    SerialPortManager.mySerialPort.WriteLine($"R{maxSpeed}");
+                    SerialPortData.MaxSpeed = maxSpeed;
+                    oldMaxSpeed = SerialPortData.MaxSpeed;
+                    UpdateCharacteristics();
+                }
+                if (uint.TryParse(textBoxAcceleration.Text, out uint acceleration) && acceleration > 0 && acceleration != oldAcceleration)
+                {
+                    SerialPortManager.mySerialPort.WriteLine($"T{acceleration}");
+                    SerialPortData.Acceleration = acceleration;
+                    oldAcceleration = SerialPortData.Acceleration;
+                    UpdateCharacteristics();
+                }
             }
-            if (uint.TryParse(textBoxAcceleration.Text, out uint acceleration) && acceleration > 0)
-            {
-                SerialPortData.Acceleration = acceleration;
-                SerialPortManager.mySerialPort.WriteLine("T" + SerialPortData.Acceleration);
-                UpdateCharacteristics();
-            }   
+        }
+
+        private void buttonResetData_Click(object sender, EventArgs e)
+        {
+            SerialPortData.ResetMotors();
         }
     }
 }

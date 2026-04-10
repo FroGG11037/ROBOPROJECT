@@ -77,5 +77,13 @@ namespace ROBOPROJECT
                 DataChanged?.Invoke(null, EventArgs.Empty);
             }
         }
+
+        public static void ResetMotors()
+        {
+            _motorBottom = 0;
+            _motorMiddle = 0;
+            _motorTop = 0;
+            DataChanged?.Invoke(null, EventArgs.Empty);
+        }
     }
 }

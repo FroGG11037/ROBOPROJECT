@@ -347,6 +347,7 @@
             buttonResetData.TabIndex = 1;
             buttonResetData.Text = "Сбросить";
             buttonResetData.UseVisualStyleBackColor = true;
+            buttonResetData.Click += buttonResetData_Click;
             // 
             // SerialControl
             // 
