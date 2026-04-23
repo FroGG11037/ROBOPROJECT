@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBoxHold = new GroupBox();
             groupBoxMotorBottom = new GroupBox();
             radioButtonBackwardMotorBottom = new RadioButton();
@@ -57,6 +58,7 @@
             radioButtonForwardMotorMiddle = new RadioButton();
             buttonHoldMotorMiddle = new Button();
             serialControl = new SerialControl();
+            timerHold = new System.Windows.Forms.Timer(components);
             groupBoxHold.SuspendLayout();
             groupBoxMotorBottom.SuspendLayout();
             groupBoxHoldCharacteristics.SuspendLayout();
@@ -135,6 +137,8 @@
             buttonHoldMotorBottom.TabIndex = 1;
             buttonHoldMotorBottom.Text = "Зажмите";
             buttonHoldMotorBottom.UseVisualStyleBackColor = true;
+            buttonHoldMotorBottom.KeyDown += buttonHoldMotorBottom_KeyDown;
+            buttonHoldMotorBottom.KeyUp += buttonHoldMotorBottom_KeyUp;
             // 
             // groupBoxHoldCharacteristics
             // 
@@ -368,6 +372,8 @@
             buttonHoldMotorTop.TabIndex = 1;
             buttonHoldMotorTop.Text = "Зажмите";
             buttonHoldMotorTop.UseVisualStyleBackColor = true;
+            buttonHoldMotorTop.KeyDown += buttonHoldMotorTop_KeyDown;
+            buttonHoldMotorTop.KeyUp += buttonHoldMotorTop_KeyUp;
             // 
             // groupBoxMotorMiddle
             // 
@@ -419,6 +425,8 @@
             buttonHoldMotorMiddle.TabIndex = 1;
             buttonHoldMotorMiddle.Text = "Зажмите";
             buttonHoldMotorMiddle.UseVisualStyleBackColor = true;
+            buttonHoldMotorMiddle.KeyDown += buttonHoldMotorMiddle_KeyDown;
+            buttonHoldMotorMiddle.KeyUp += buttonHoldMotorMiddle_KeyUp;
             // 
             // serialControl
             // 
@@ -432,7 +440,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 251, 251);
-            ClientSize = new Size(1204, 601);
+            ClientSize = new Size(1284, 601);
             Controls.Add(serialControl);
             Controls.Add(groupBoxHold);
             Name = "FormHold";
@@ -485,5 +493,6 @@
         private Button buttonHoldMotorBottom;
         private SerialControl serialControl;
         private TrackBar trackBarServoGripperSpeed;
+        private System.Windows.Forms.Timer timerHold;
     }
 }

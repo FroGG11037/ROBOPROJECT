@@ -15,10 +15,17 @@ namespace ROBOPROJECT
         public static void OpenPort(string portName) //открытие порта
         {
            if (!_serialPort.IsOpen)
+             {
+                try
                 {
                     _serialPort.PortName = portName;
                     _serialPort.Open();
                 }
+                catch
+                {
+                    MessageBox.Show("Порт, к которому вы пытаетесь подключиться, отключён. Попробуйте обновить порты!");
+                }
+             }
         }
         public static void ClosePort() //закрытие порта
         {
@@ -26,6 +33,10 @@ namespace ROBOPROJECT
             {
                 _serialPort.Close();
             }
+        }
+        public static void SerialPortReset() //сброс порта
+        {
+
         }
     }
 }

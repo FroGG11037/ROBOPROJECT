@@ -5,10 +5,10 @@ namespace ROBOPROJECT
         public FormMain()
         {
             InitializeComponent();
-            
+
         }
-        private Form activeForm= null;
-        private void openForm(Form childForm)
+        private Form activeForm = null;
+        private void openForm(Form childForm) //открытие форм
         {
             if (activeForm != null)
             {
@@ -22,12 +22,15 @@ namespace ROBOPROJECT
             childForm.BringToFront();
             childForm.Show();
         }
+
         private void buttonHold_Click(object sender, EventArgs e)
         {
             panelBacklight1.Visible = true;
             panelBacklight2.Visible = false;
+            panelBacklight3.Visible = false;
             buttonHold.ForeColor = Color.FromArgb(2, 100, 254);
             buttonManual.ForeColor = Color.Black;
+            buttonRecord.ForeColor = Color.Black;
             openForm(new FormHold());
         }
 
@@ -35,9 +38,22 @@ namespace ROBOPROJECT
         {
             panelBacklight1.Visible = false;
             panelBacklight2.Visible = true;
+            panelBacklight3.Visible = false;
             buttonManual.ForeColor = Color.FromArgb(2, 100, 254);
             buttonHold.ForeColor = Color.Black;
+            buttonRecord.ForeColor = Color.Black;
             openForm(new FormManual());
+        }
+
+        private void buttonRecord_Click(object sender, EventArgs e)
+        {
+            panelBacklight1.Visible = false;
+            panelBacklight2.Visible = false;
+            panelBacklight3.Visible = true;
+            buttonManual.ForeColor = Color.Black;
+            buttonHold.ForeColor = Color.Black;
+            buttonRecord.ForeColor = Color.FromArgb(2, 100, 254);
+            openForm(new FormRecord());
         }
     }
 }

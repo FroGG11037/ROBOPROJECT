@@ -74,7 +74,6 @@ namespace ROBOPROJECT
                 if (!string.IsNullOrWhiteSpace(comboBoxPorts.Text))
                 {
                     SerialPortManager.OpenPort(comboBoxPorts.Text);
-                    MessageBox.Show("Подключено успешно!");
                     UpdatePortStatus();
                 }
                 else
@@ -85,7 +84,6 @@ namespace ROBOPROJECT
             else
             {
                 SerialPortManager.ClosePort();
-                MessageBox.Show("Отключено успешно!");
                 UpdatePortStatus();
             }
         }

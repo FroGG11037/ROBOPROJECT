@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             panelSideMenu = new Panel();
+            panelRecord = new Panel();
+            buttonRecord = new Button();
+            panelBacklight3 = new Panel();
             panelManualMenu = new Panel();
             buttonManual = new Button();
             panelBacklight2 = new Panel();
@@ -42,6 +45,7 @@
             panelMain = new Panel();
             labelGreeting = new Label();
             panelSideMenu.SuspendLayout();
+            panelRecord.SuspendLayout();
             panelManualMenu.SuspendLayout();
             panelHoldMenu.SuspendLayout();
             panelLogo.SuspendLayout();
@@ -52,6 +56,7 @@
             // panelSideMenu
             // 
             panelSideMenu.BackColor = Color.FromArgb(231, 238, 255);
+            panelSideMenu.Controls.Add(panelRecord);
             panelSideMenu.Controls.Add(panelManualMenu);
             panelSideMenu.Controls.Add(panelHoldMenu);
             panelSideMenu.Controls.Add(panelLogo);
@@ -60,6 +65,47 @@
             panelSideMenu.Name = "panelSideMenu";
             panelSideMenu.Size = new Size(225, 640);
             panelSideMenu.TabIndex = 0;
+            // 
+            // panelRecord
+            // 
+            panelRecord.BackColor = Color.FromArgb(208, 218, 255);
+            panelRecord.Controls.Add(buttonRecord);
+            panelRecord.Controls.Add(panelBacklight3);
+            panelRecord.Dock = DockStyle.Top;
+            panelRecord.Location = new Point(0, 285);
+            panelRecord.Name = "panelRecord";
+            panelRecord.Size = new Size(225, 80);
+            panelRecord.TabIndex = 6;
+            // 
+            // buttonRecord
+            // 
+            buttonRecord.BackColor = Color.FromArgb(208, 218, 255);
+            buttonRecord.Cursor = Cursors.Hand;
+            buttonRecord.Dock = DockStyle.Fill;
+            buttonRecord.FlatAppearance.BorderSize = 0;
+            buttonRecord.FlatStyle = FlatStyle.Flat;
+            buttonRecord.Font = new Font("Segoe UI Semibold", 20.25F, FontStyle.Bold);
+            buttonRecord.ForeColor = Color.Black;
+            buttonRecord.Image = (Image)resources.GetObject("buttonRecord.Image");
+            buttonRecord.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonRecord.Location = new Point(8, 0);
+            buttonRecord.Name = "buttonRecord";
+            buttonRecord.Size = new Size(217, 80);
+            buttonRecord.TabIndex = 2;
+            buttonRecord.Text = "Запись";
+            buttonRecord.TextAlign = ContentAlignment.MiddleRight;
+            buttonRecord.UseVisualStyleBackColor = false;
+            buttonRecord.Click += buttonRecord_Click;
+            // 
+            // panelBacklight3
+            // 
+            panelBacklight3.BackColor = Color.FromArgb(2, 100, 254);
+            panelBacklight3.Dock = DockStyle.Left;
+            panelBacklight3.Location = new Point(0, 0);
+            panelBacklight3.Name = "panelBacklight3";
+            panelBacklight3.Size = new Size(8, 80);
+            panelBacklight3.TabIndex = 0;
+            panelBacklight3.Visible = false;
             // 
             // panelManualMenu
             // 
@@ -182,7 +228,7 @@
             panelMain.Dock = DockStyle.Fill;
             panelMain.Location = new Point(225, 0);
             panelMain.Name = "panelMain";
-            panelMain.Size = new Size(1220, 640);
+            panelMain.Size = new Size(1300, 640);
             panelMain.TabIndex = 1;
             // 
             // labelGreeting
@@ -191,7 +237,7 @@
             labelGreeting.Font = new Font("Segoe UI", 39.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
             labelGreeting.Location = new Point(0, 0);
             labelGreeting.Name = "labelGreeting";
-            labelGreeting.Size = new Size(1220, 640);
+            labelGreeting.Size = new Size(1300, 640);
             labelGreeting.TabIndex = 0;
             labelGreeting.Text = "Добро пожаловать!\r\nВыберите режим работы";
             labelGreeting.TextAlign = ContentAlignment.MiddleCenter;
@@ -201,13 +247,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(250, 251, 251);
-            ClientSize = new Size(1445, 640);
+            ClientSize = new Size(1525, 640);
             Controls.Add(panelMain);
             Controls.Add(panelSideMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMain";
             Text = "Управление роботом";
             panelSideMenu.ResumeLayout(false);
+            panelRecord.ResumeLayout(false);
             panelManualMenu.ResumeLayout(false);
             panelHoldMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
@@ -229,6 +276,9 @@
         private Panel panelHoldMenu;
         private Button buttonHold;
         private Panel panelBacklight1;
+        private Panel panelRecord;
+        private Button buttonRecord;
+        private Panel panelBacklight3;
         private Panel panelMain;
         private Label labelGreeting;
     }
