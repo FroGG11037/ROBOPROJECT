@@ -6,6 +6,13 @@ namespace ROBOPROJECT
 {
     internal class SerialPortData
     {
+        public static List<RecordItem> SavedRecords { get; set; } = new List<RecordItem>(); 
+        public class RecordItem
+        {
+            public int Bottom { get; set; }
+            public int Middle { get; set; }
+            public int Top { get; set; }
+        }
         private static uint _maxSpeed = 1000;
         public static uint MaxSpeed
         {
@@ -85,5 +92,6 @@ namespace ROBOPROJECT
             _motorTop = 0;
             DataChanged?.Invoke(null, EventArgs.Empty);
         }
+
     }
 }

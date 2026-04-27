@@ -137,8 +137,8 @@
             buttonHoldMotorBottom.TabIndex = 1;
             buttonHoldMotorBottom.Text = "Зажмите";
             buttonHoldMotorBottom.UseVisualStyleBackColor = true;
-            buttonHoldMotorBottom.KeyDown += buttonHoldMotorBottom_KeyDown;
-            buttonHoldMotorBottom.KeyUp += buttonHoldMotorBottom_KeyUp;
+            buttonHoldMotorBottom.MouseDown += buttonHoldMotorBottom_MouseDown;
+            buttonHoldMotorBottom.MouseUp += buttonHoldMotorBottom_MouseUp;
             // 
             // groupBoxHoldCharacteristics
             // 
@@ -372,8 +372,8 @@
             buttonHoldMotorTop.TabIndex = 1;
             buttonHoldMotorTop.Text = "Зажмите";
             buttonHoldMotorTop.UseVisualStyleBackColor = true;
-            buttonHoldMotorTop.KeyDown += buttonHoldMotorTop_KeyDown;
-            buttonHoldMotorTop.KeyUp += buttonHoldMotorTop_KeyUp;
+            buttonHoldMotorTop.MouseDown += buttonHoldMotorTop_MouseDown;
+            buttonHoldMotorTop.MouseUp += buttonHoldMotorTop_MouseUp;
             // 
             // groupBoxMotorMiddle
             // 
@@ -425,8 +425,8 @@
             buttonHoldMotorMiddle.TabIndex = 1;
             buttonHoldMotorMiddle.Text = "Зажмите";
             buttonHoldMotorMiddle.UseVisualStyleBackColor = true;
-            buttonHoldMotorMiddle.KeyDown += buttonHoldMotorMiddle_KeyDown;
-            buttonHoldMotorMiddle.KeyUp += buttonHoldMotorMiddle_KeyUp;
+            buttonHoldMotorMiddle.MouseDown += buttonHoldMotorMiddle_MouseDown;
+            buttonHoldMotorMiddle.MouseUp += buttonHoldMotorMiddle_MouseUp;
             // 
             // serialControl
             // 

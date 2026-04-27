@@ -34,8 +34,8 @@
             ColumnMotorBottom = new DataGridViewTextBoxColumn();
             ColumnMotorMiddle = new DataGridViewTextBoxColumn();
             ColumnMotorTop = new DataGridViewTextBoxColumn();
-            ColumnServoMiddle = new DataGridViewTextBoxColumn();
-            ColumnServoGripper = new DataGridViewTextBoxColumn();
+            ColumnTime = new DataGridViewTextBoxColumn();
+            buttonRecord = new Button();
             groupBoxRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewRecord).BeginInit();
             SuspendLayout();
@@ -50,6 +50,7 @@
             // groupBoxRecord
             // 
             groupBoxRecord.BackColor = Color.FromArgb(231, 238, 255);
+            groupBoxRecord.Controls.Add(buttonRecord);
             groupBoxRecord.Controls.Add(dataGridViewRecord);
             groupBoxRecord.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             groupBoxRecord.ForeColor = Color.Black;
@@ -63,10 +64,10 @@
             // dataGridViewRecord
             // 
             dataGridViewRecord.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewRecord.Columns.AddRange(new DataGridViewColumn[] { ColumnMotorBottom, ColumnMotorMiddle, ColumnMotorTop, ColumnServoMiddle, ColumnServoGripper });
+            dataGridViewRecord.Columns.AddRange(new DataGridViewColumn[] { ColumnMotorBottom, ColumnMotorMiddle, ColumnMotorTop, ColumnTime });
             dataGridViewRecord.Location = new Point(6, 28);
             dataGridViewRecord.Name = "dataGridViewRecord";
-            dataGridViewRecord.Size = new Size(556, 481);
+            dataGridViewRecord.Size = new Size(556, 449);
             dataGridViewRecord.TabIndex = 0;
             // 
             // ColumnMotorBottom
@@ -84,15 +85,23 @@
             ColumnMotorTop.HeaderText = "Верхний мотор";
             ColumnMotorTop.Name = "ColumnMotorTop";
             // 
-            // ColumnServoMiddle
+            // ColumnTime
             // 
-            ColumnServoMiddle.HeaderText = "Средний серво";
-            ColumnServoMiddle.Name = "ColumnServoMiddle";
+            ColumnTime.HeaderText = "Время";
+            ColumnTime.Name = "ColumnTime";
             // 
-            // ColumnServoGripper
+            // buttonRecord
             // 
-            ColumnServoGripper.HeaderText = "Захват серво";
-            ColumnServoGripper.Name = "ColumnServoGripper";
+            buttonRecord.Cursor = Cursors.Hand;
+            buttonRecord.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            buttonRecord.ForeColor = Color.Black;
+            buttonRecord.Location = new Point(6, 510);
+            buttonRecord.Name = "buttonRecord";
+            buttonRecord.Size = new Size(135, 50);
+            buttonRecord.TabIndex = 2;
+            buttonRecord.Text = "Записать";
+            buttonRecord.UseVisualStyleBackColor = true;
+            buttonRecord.Click += buttonRecord_Click;
             // 
             // FormRecord
             // 
@@ -117,7 +126,7 @@
         private DataGridViewTextBoxColumn ColumnMotorBottom;
         private DataGridViewTextBoxColumn ColumnMotorMiddle;
         private DataGridViewTextBoxColumn ColumnMotorTop;
-        private DataGridViewTextBoxColumn ColumnServoMiddle;
-        private DataGridViewTextBoxColumn ColumnServoGripper;
+        private DataGridViewTextBoxColumn ColumnTime;
+        private Button buttonRecord;
     }
 }

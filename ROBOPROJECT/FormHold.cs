@@ -17,41 +17,6 @@ namespace ROBOPROJECT
         }
         char Sender = '0';
         int stepsPerInterval = 10;
-        private void buttonHoldMotorBottom_KeyDown(object sender, KeyEventArgs e)
-        {
-           Sender= 'B';
-            timerHold.Start();
-        }
-
-        private void buttonHoldMotorBottom_KeyUp(object sender, KeyEventArgs e)
-        {
-            timerHold.Stop();
-            Sender = '0';
-        }
-
-        private void buttonHoldMotorMiddle_KeyDown(object sender, KeyEventArgs e)
-        {
-            Sender = 'M';
-            timerHold.Start();
-        }
-
-        private void buttonHoldMotorMiddle_KeyUp(object sender, KeyEventArgs e)
-        {
-            timerHold.Stop();
-            Sender = '0';
-        }
-
-        private void buttonHoldMotorTop_KeyDown(object sender, KeyEventArgs e)
-        {
-            Sender = 'T';
-            timerHold.Start();
-        }
-
-        private void buttonHoldMotorTop_KeyUp(object sender, KeyEventArgs e)
-        {
-            timerHold.Stop();
-            Sender = '0';
-        }
 
         private void TimerTick(object sender, EventArgs e)
         {
@@ -60,10 +25,10 @@ namespace ROBOPROJECT
                 switch (Sender)
                 {
                     case 'B':
-                        if (radioButtonForwardMotorBottom.Checked) 
-                       SerialPortManager.mySerialPort.WriteLine($"Z{stepsPerInterval}");
+                        if (radioButtonForwardMotorBottom.Checked)
+                            SerialPortManager.mySerialPort.WriteLine($"Z{stepsPerInterval}");
                         if (radioButtonBackwardMotorBottom.Checked)
-                        SerialPortManager.mySerialPort.WriteLine($"Z-{stepsPerInterval}");
+                            SerialPortManager.mySerialPort.WriteLine($"Z-{stepsPerInterval}");
                         break;
                     case 'M':
                         if (radioButtonForwardMotorMiddle.Checked)
@@ -79,6 +44,42 @@ namespace ROBOPROJECT
                         break;
                 }
             }
+        }
+
+        private void buttonHoldMotorTop_MouseDown(object sender, MouseEventArgs e)
+        {
+            Sender = 'T';
+            timerHold.Start();
+        }
+
+        private void buttonHoldMotorTop_MouseUp(object sender, MouseEventArgs e)
+        {
+            timerHold.Stop();
+            Sender = '0';
+        }
+
+        private void buttonHoldMotorMiddle_MouseDown(object sender, MouseEventArgs e)
+        {
+            Sender = 'M';
+            timerHold.Start();
+        }
+
+        private void buttonHoldMotorMiddle_MouseUp(object sender, MouseEventArgs e)
+        {
+            timerHold.Stop();
+            Sender = '0';
+        }
+
+        private void buttonHoldMotorBottom_MouseDown(object sender, MouseEventArgs e)
+        {
+            Sender = 'B';
+            timerHold.Start();
+        }
+
+        private void buttonHoldMotorBottom_MouseUp(object sender, MouseEventArgs e)
+        {
+            timerHold.Stop();
+            Sender = '0';
         }
     }
 }
